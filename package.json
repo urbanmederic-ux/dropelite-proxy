@@ -1,1 +1,1 @@
-﻿{"name":"proxy-dropelite","version":"1.0.0","main":"server.js","scripts":{"start":"node server.js"},"engines":{"node":">=18.0.0"}}
+﻿{\n  "name": "proxy-dropelite",\n  "version": "1.0.0",\n  "main": "server.js",\n  "scripts": {\n    "start": "node server.js"\n  },\n  "engines": {\n    "node": ">=18.0.0"\n  },\n  "dependencies": {\n    "express": "^4.18.2",\n    "node-fetch": "^2.6.9",\n    "cors": "^2.8.5"\n  }\n}
