@@ -1,4 +1,4 @@
-﻿[phases.build]
+[phases.build]
 cmds = []
 
 [start]
