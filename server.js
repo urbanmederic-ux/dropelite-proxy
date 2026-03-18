@@ -26,4 +26,18 @@ const server = http.createServer((req, res) => {
 
     const r = https.request(options, (pr) => {
       if ([301,302,307,308].includes(pr.statusCode) && pr.headers.location) {
-        res.writeHead(302, { "Location": "/im
+        res.writeHead(302, { "Location": "/img?url=" + encodeURIComponent(pr.headers.location) });
+        res.end(); return;
+      }
+      res.writeHead(pr.statusCode, { "Content-Type": pr.headers["content-type"] || "image/jpeg", "Cache-Control": "public, max-age=86400" });
+      pr.pipe(res);
+    });
+
+    r.on("error", () => { if (!res.headersSent) { res.writeHead(500); res.end("error"); } });
+    r.end(); return;
+  }
+
+  res.writeHead(200); res.end(JSON.stringify({ status: "DropElite Proxy OK" }));
+});
+
+server.listen(PORT, () => console.log("Proxy port " + PORT));
